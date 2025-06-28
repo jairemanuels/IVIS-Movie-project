@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 
 <html lang="en">
+    <style>
+  /* hide all code inputs by default */
+  div.input {
+    display: none;
+  }
+  /* style the toggle buttons */
+  .toggle-btn {
+    margin: 0.5em 0;
+    padding: 0.2em 0.5em;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('div.input').forEach(function(inp, idx) {
+      // create the toggle button
+      const btn = document.createElement('button');
+      btn.textContent = 'Show/Hide Code';
+      btn.className = 'toggle-btn';
+      // insert it just above the code cell
+      inp.parentNode.insertBefore(btn, inp);
+      // wire up the click
+      btn.addEventListener('click', () => {
+        inp.style.display = inp.style.display === 'none' ? '' : 'none';
+      });
+      // ensure it starts hidden
+      inp.style.display = 'none';
+    });
+  });
+</script>
+
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Visualisaties</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
